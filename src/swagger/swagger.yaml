@@ -1,0 +1,169 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: API CRUD DE VEICULO
+  contact: {}
+host: localhost:3001
+basePath: /
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /veiculo:
+    get:
+      summary: Listar Veíiculos
+      tags:
+      - Misc
+      operationId: ListarVeíiculos
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      summary: Criar Veículo
+      tags:
+      - Misc
+      operationId: CriarVeículo
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/CriarVeiculoRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    put:
+      summary: Atualizar Veículo
+      tags:
+      - Misc
+      operationId: AtualizarVeículo
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/AtualizarVeiculoRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /veiculo/{placa}:
+    delete:
+      summary: Deletar Veículo
+      tags:
+      - Misc
+      operationId: DeletarVeículo
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: placa
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      summary: Obter Veíiculo
+      tags:
+      - Misc
+      operationId: ObterVeíiculo
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: placa
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  CriarVeiculoRequest:
+    title: CriarVeiculoRequest
+    example:
+      placa: AAA1234
+      chassi: 1RV 524T98 88 S92605
+      renavam: '98447225015'
+      modelo: Del Rey Belina GL
+      marca: Ford
+      ano: 1987
+    type: object
+    properties:
+      placa:
+        type: string
+      chassi:
+        type: string
+      renavam:
+        type: string
+      modelo:
+        type: string
+      marca:
+        type: string
+      ano:
+        type: integer
+        format: int32
+    required:
+    - placa
+    - chassi
+    - renavam
+    - modelo
+    - marca
+    - ano
+  AtualizarVeiculoRequest:
+    title: AtualizarVeiculoRequest
+    example:
+      placa: AAA1234
+      chassi: 1RV 524T98 88 S92605
+      renavam: '98447225015'
+      modelo: Del Rey Belina GL
+      marca: Ford
+      ano: 1988
+    type: object
+    properties:
+      placa:
+        type: string
+      chassi:
+        type: string
+      renavam:
+        type: string
+      modelo:
+        type: string
+      marca:
+        type: string
+      ano:
+        type: integer
+        format: int32
+    required:
+    - placa
+    - chassi
+    - renavam
+    - modelo
+    - marca
+    - ano
+tags:
+- name: Misc
+  description: ''
