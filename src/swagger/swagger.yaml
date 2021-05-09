@@ -3,9 +3,9 @@ info:
   version: '1.0'
   title: API CRUD DE VEICULO
   contact: {}
-host: localhost:3001
 basePath: /
 schemes:
+- https
 - http
 consumes:
 - application/json
@@ -14,10 +14,10 @@ produces:
 paths:
   /veiculo:
     get:
-      summary: Listar Veíiculos
+      summary: Listar Veículos
       tags:
-      - Misc
-      operationId: ListarVeíiculos
+      - Veículo
+      operationId: ListarVeículos
       deprecated: false
       produces:
       - application/json
@@ -26,10 +26,19 @@ paths:
         '200':
           description: ''
           headers: {}
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ObterVeiculoResponse'
+        '400':
+          description: ''
+          headers: {}
+          schema:
+            $ref: '#/definitions/MensagemResponse'
     post:
       summary: Criar Veículo
       tags:
-      - Misc
+      - Veículo
       operationId: CriarVeículo
       deprecated: false
       produces:
@@ -45,10 +54,17 @@ paths:
         '200':
           description: ''
           headers: {}
+          schema:
+            $ref: '#/definitions/MensagemResponse'
+        '400':
+          description: ''
+          headers: {}
+          schema:
+            $ref: '#/definitions/MensagemResponse'
     put:
       summary: Atualizar Veículo
       tags:
-      - Misc
+      - Veículo
       operationId: AtualizarVeículo
       deprecated: false
       produces:
@@ -64,11 +80,18 @@ paths:
         '200':
           description: ''
           headers: {}
+          schema:
+            $ref: '#/definitions/MensagemResponse'
+        '400':
+          description: ''
+          headers: {}
+          schema:
+            $ref: '#/definitions/MensagemResponse'
   /veiculo/{placa}:
     delete:
       summary: Deletar Veículo
       tags:
-      - Misc
+      - Veículo
       operationId: DeletarVeículo
       deprecated: false
       produces:
@@ -83,11 +106,18 @@ paths:
         '200':
           description: ''
           headers: {}
+          schema:
+            $ref: '#/definitions/MensagemResponse'
+        '400':
+          description: ''
+          headers: {}
+          schema:
+            $ref: '#/definitions/MensagemResponse'
     get:
-      summary: Obter Veíiculo
+      summary: Obter Veículo
       tags:
-      - Misc
-      operationId: ObterVeíiculo
+      - Veículo
+      operationId: ObterVeículo
       deprecated: false
       produces:
       - application/json
@@ -101,6 +131,13 @@ paths:
         '200':
           description: ''
           headers: {}
+          schema:
+            $ref: '#/definitions/ObterVeiculoResponse'
+        '400':
+          description: ''
+          headers: {}
+          schema:
+            $ref: '#/definitions/MensagemResponse'
 definitions:
   CriarVeiculoRequest:
     title: CriarVeiculoRequest
@@ -133,6 +170,7 @@ definitions:
     - modelo
     - marca
     - ano
+
   AtualizarVeiculoRequest:
     title: AtualizarVeiculoRequest
     example:
@@ -164,6 +202,43 @@ definitions:
     - modelo
     - marca
     - ano
+
+  ObterVeiculoResponse:
+    title: ObterVeiculoResponse
+    example:
+      id: 1
+      placa: AAA1234
+      chassi: 1RV 524T98 88 S92605
+      renavam: '98447225015'
+      modelo: Del Rey Belina GL
+      marca: Ford
+      ano: 1988
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int32
+      placa:
+        type: string
+      chassi:
+        type: string
+      renavam:
+        type: string
+      modelo:
+        type: string
+      marca:
+        type: string
+      ano:
+        type: integer
+        format: int32
+
+  MensagemResponse:
+    title: MensagemResponse
+    type: object
+    properties:
+      mensagem:
+        type: string
+        
 tags:
-- name: Misc
+- name: Veículo
   description: ''
