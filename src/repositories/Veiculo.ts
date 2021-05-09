@@ -77,7 +77,7 @@ class Veiculo {
 
     try {
       await prisma.veiculo.update({
-        data: veiculo,
+        data: { ...veiculo, editadoEm: new Date() },
         where: {
           placa: veiculo.placa
         }
