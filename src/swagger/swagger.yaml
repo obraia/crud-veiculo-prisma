@@ -2,7 +2,9 @@ swagger: '2.0'
 info:
   version: '1.0'
   title: API CRUD DE VEICULO
-  contact: {}
+  contact: 
+    name: obraia
+    url: https://github.com/obraia
 basePath: /api-veiculo
 schemes:
 - https
@@ -21,7 +23,17 @@ paths:
       deprecated: false
       produces:
       - application/json
-      parameters: []
+      parameters:
+      - name: pagina
+        in: query
+        required: false
+        type: integer
+        description: ''
+      - name: linhas
+        in: query
+        required: false
+        type: integer
+        description: ''
       responses:
         '200':
           description: ''

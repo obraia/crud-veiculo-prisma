@@ -3,6 +3,11 @@ import { IVeiculo } from "../interfaces/IVeiculo";
 import { CustomError } from '../utils/CustomError';
 import { httpStatusCode } from '../utils/httpStatusCode';
 
+interface IParams {
+  pagina: number;
+  linhas: number;
+}
+
 class Veiculo {
   async show(placa: string) {
     const prisma = new PrismaClient();
@@ -20,7 +25,7 @@ class Veiculo {
         },
         where: {
           placa
-        }
+        },
       });
 
       return veiculo;
@@ -29,7 +34,7 @@ class Veiculo {
     }
   }
 
-  async index() {
+  async index({ linhas, pagina }: IParams) {
     const prisma = new PrismaClient();
 
     try {
@@ -42,12 +47,14 @@ class Veiculo {
           modelo: true,
           marca: true,
           ano: true
-        }
+        },
+        skip: (pagina - 1) * linhas,
+        take: linhas,
       });
+
       return veiculos;
     } catch (error) {
       throw new CustomError(error.message, httpStatusCode.INTERNAL_SERVER_ERROR);
-
     }
   }
 

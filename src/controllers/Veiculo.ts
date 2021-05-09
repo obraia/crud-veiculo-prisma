@@ -20,10 +20,14 @@ class Veiculo {
   }
 
   async index(req: Request, res: Response) {
+    const { pagina = 1, linhas = 10 } = req.query;
     const repository = new Repository();
 
     try {
-      const veiculos = await repository.index();
+      const veiculos = await repository.index({
+        pagina: Number(pagina),
+        linhas: Number(linhas)
+      });
 
       res.status(200).json(veiculos);
     } catch (error) {
