@@ -3,7 +3,7 @@ const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 const should = chai.should();
 
-const url = 'http://localhost:3001';
+const url = 'http://localhost:3002';
 const placa = 'GSR-2944';
 
 describe('Teste CRUD Veículo', () => {
