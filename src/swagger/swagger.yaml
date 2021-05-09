@@ -3,7 +3,7 @@ info:
   version: '1.0'
   title: API CRUD DE VEICULO
   contact: {}
-basePath: /
+basePath: /api-veiculo
 schemes:
 - https
 - http
