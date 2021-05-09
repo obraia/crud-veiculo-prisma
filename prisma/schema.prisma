@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Veiculo {
+  id        Int       @unique @default(autoincrement())
+  placa     String    @unique
+  chassi    String    @unique
+  renavam   String    @unique
+  modelo    String
+  marca     String
+  ano       Int
+  criadoEm  DateTime  @default(now())
+  editadoEm DateTime?
+}
