@@ -4,8 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "node index.js",
     "dev": "nodemon index.ts",
-    "test": "mocha ./tests/**/*.js"
+    "test": "mocha ./tests/**/*.js",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean"
   },
   "dependencies": {
     "@prisma/client": "2.22.1",
