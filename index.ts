@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv';
 import { server } from './src/server';
+import 'newrelic';
 
 dotenv.config();
 
